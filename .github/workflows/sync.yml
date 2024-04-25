@@ -1,0 +1,24 @@
+name: Sync with Original Repository
+
+on:
+  repository_dispatch:
+    types: [sync]
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Fetch changes from original repository
+        run: git fetch upstream
+
+      - name: Merge changes
+        run: git merge upstream/main --no-edit
+
+      - name: Push changes to repository
+        run: git push origin main
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
