@@ -1,4 +1,5 @@
 import Header from "../../components/Header";
+import "./documentation.css";
 
 export default function Documentation() {
   return (
