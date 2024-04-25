@@ -3,7 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import './App.css';
 import ComponentPage from "./pages/home/HomePage";
 import AboutPage from "./pages/about/About";
-
+import DocPage from "./pages/documentation/Documentation";
 
 
 
@@ -15,6 +15,7 @@ function App() {
             <Routes>
                 <Route path="/" element={<ComponentPage/>} />
                 <Route path="/about" element={<AboutPage/>} />
+                <Route path="/documentation" element={<DocPage/>} />
             </Routes>
         </div>
     </div>
