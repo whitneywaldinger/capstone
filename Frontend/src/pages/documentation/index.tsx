@@ -1,13 +1,13 @@
-import React from "react";
-import "./index.css"
+import Header from "../../components/Header";
 
-
-function Documentation() {
-    return (
-        <div>
-            documentation
-        </div>
-    )
-}
-
-export default Documentation;
+export default function Documentation() {
+  return (
+    <div>
+      <div>
+        <Header />
+      </div>
+      <div>
+        <h1>Documentation</h1>
+    </div>
+  );
+};
