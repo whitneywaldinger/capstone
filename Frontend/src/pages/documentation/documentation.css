@@ -3,17 +3,17 @@
   margin-top: 25pt;
 }
 
-.heading1 {
+h1 {
   font-size: 25pt;
   margin-top: 25pt;
 }
 
-.heading2 {
+h2 {
   font-size: 20pt;
   margin-top: 15pt;
 }
 
-.paragraph {
+p {
   font-size: 12pt;
   margin-top: 10pt;
 }
