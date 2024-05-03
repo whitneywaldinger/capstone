@@ -1,4 +1,4 @@
-import Header from "../../components/Header";
+import Header from "../../components/Header/Header";
 import "./About.css";
 import najibPicture from "../../headshots/Haidar_Najib_headshot.jpeg"
 import aaronPicture from "../../headshots/Hong_Aaron_headshot.jpeg"
@@ -16,6 +16,7 @@ export default function About() {
       <div>
         <Header />
       </div>
+
       <div className="container">
         <h1 className="heading1">About</h1>
         <p className="paragraph">The Alaska Center for Energy and Power (ACEP) has initiated a project

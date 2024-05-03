@@ -1,10 +1,11 @@
 import { useState } from 'react';
 import axios from "axios";
-import { Input } from "./Chat/input";
-import { Button } from "./Chat/button";
+import { Input } from "./ChatComponents/input";
+import { Button } from "./ChatComponents/button";
 
 export default function Searchbar() {
     const [userInput, setUserInput] = useState("");
+    const [loading, setLoading] = useState(false);
     const [responses, setResponses] = useState([
         {
         text: "Welcome to the ACEP Research Chatbot! I am your personalized research assistant. How can I help you?",
@@ -20,6 +21,14 @@ export default function Searchbar() {
 
   const handleSend = async () => {
     const userMessage = userInput;
+
+    setUserInput(""); // Clear input after sending
+    setResponses((prevResponses) => [
+        { text: userMessage, sender: "user" , sources: []},
+        ...prevResponses,
+    ]); // Pop user's message first
+    setLoading(true) // Lock the send button until get the response
+
     try {
       const response = await axios.post("http://127.0.0.1:5000/sendquery", { text: userInput });
       setResponses((prevResponses) => [
@@ -28,24 +37,24 @@ export default function Searchbar() {
           sender: "bot",
           sources: response.data.sources // Include sources with the response
         },
-        { text: userMessage, sender: "user" , sources: []},
         ...prevResponses,
       ]);
       setUserInput(""); // Clear input after sending
     } catch (error) {
       setResponses((prevResponses) => [
         { text: "Failed to get responses from LLM.", sender: "bot", sources: [] },
-        { text: userMessage, sender: "user", sources: [] },
         ...prevResponses,
       ]);
       console.error("Error sending message:", error);
+    } finally {
+        setLoading(false); // Unlock the send button
     }
   };
 
     return (
       <main className="mx-auto mt-10 max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col items-center">
-          <div className="mt-6 mb-12 w-full rounded-md bg-white p-6 shadow" style={{ maxWidth: 'screen', maxHeight: '1050px', overflowY: 'auto' }}>
+        <div className="flex flex-col items-center justify-between" style={{ minHeight: '80vh'}}>
+          <div className="mt-6 mb-6 w-full rounded-md bg-white p-6 shadow" style={{ maxWidth: 'screen', maxHeight: '1050px', overflowY: 'auto'}}>
             <div className="flex flex-col-reverse " style={{ minHeight: '100%' }}>
               {responses.map((response, index) => (
                 <div key={index} className={`flex items-center space-x-4 ${response.sender === "user" ? "justify-end" : ""}`}>
@@ -66,12 +75,16 @@ export default function Searchbar() {
               ))}
             </div>
           </div>
-          <div className="absolute bottom-6 mt-6 w-full rounded-md bg-white p-6 shadow" style={{ maxWidth: '1200px'}}>
+
+          <footer className="w-full rounded-md bg-white p-6 shadow" style={{ maxWidth: '1200px'}}>
             <div className="flex items-center space-x-4">
-              <Input value={userInput} onChange={handleInputChange} placeholder="Type your message here..." />
-              <Button onClick={handleSend} disabled={!userInput.trim()}>Send</Button>
+              <Input
+                  value={userInput}
+                  onChange={handleInputChange}
+                  placeholder={loading ? "Getting response" : "Type your message here..."} />
+              <Button onClick={handleSend} disabled={!userInput.trim() || loading}>Send</Button>
             </div>
-          </div>
+          </footer>
         </div>
       </main>
     ); 
