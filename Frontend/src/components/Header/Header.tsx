@@ -1,5 +1,5 @@
-import logoImage from "../../acep-logo.png"
-import "./Header.css"
+import React, { useState } from 'react';
+import HamburgerMenu from '../Menu/menu';
 
 function GithubIcon(props) {
   return (
@@ -19,21 +19,31 @@ function GithubIcon(props) {
     </svg>
   );
 }
+
 export default function Header() {
-    return (
-        <header className="header">
-          <div className="mx-auto flex max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
-              <a href="https://www.uaf.edu/acep/">
-                  <img alt="Logo" className="h-14 w-auto" src={logoImage} />
-              </a>
-              <a className="navTab" href="/">Chat</a>
-              <a className="navTab" href="/about">About</a>
-              <a className="navTab" href="/documentation">Documentation</a>
-              <a className="flex items-center space-x-2 text-gray-600 hover:text-gray-900" href="https://github.com/dnur/acep-energy-llm" rel="noopener noreferrer" target="_blank">
-                  <GithubIcon className="h-6 w-6" />
-                  <span>GitHub</span>
-              </a>
-          </div>
-        </header>
-    );
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
+  };
+
+  return (
+    <header className="header">
+      <div className="mx-auto flex max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+        <a href="https://www.uaf.edu/acep/">
+          <img alt="Logo" className="h-14 w-auto" src="../acep-logo.png"/>
+        </a>
+        <HamburgerMenu isOpen={isOpen} toggleMenu={toggleMenu} />
+        <nav className={isOpen ? "menu-open" : ""}>
+          <a className="navTab" href="/">Chat</a>
+          <a className="navTab" href="/about">About</a>
+          <a className="navTab" href="/documentation">Documentation</a>
+          <a className="flex items-center space-x-2 text-gray-600 hover:text-gray-900" href="https://github.com/dnur/acep-energy-llm" rel="noopener noreferrer" target="_blank">
+            <GithubIcon className="h-6 w-6" />
+            <span>GitHub</span>
+          </a>
+        </nav>
+      </div>
+    </header>
+  );
 }
