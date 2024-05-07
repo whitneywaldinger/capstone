@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import logoImage from "../../acep-logo.png";
+import logoImage from "../../images/acep-logo.png";
 import "./Header.css";
 import { slide as Menu } from 'react-burger-menu';
 
