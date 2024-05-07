@@ -1,7 +1,9 @@
-import logoImage from "../../acep-logo.png"
-import "./Header.css"
+import React, { useState } from 'react';
+import logoImage from "../../acep-logo.png";
+import "./Header.css";
+import { slide as Menu } from 'react-burger-menu';
 
-function GithubIcon(props) {
+function GithubIcon(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg
       {...props}
@@ -20,21 +22,24 @@ function GithubIcon(props) {
   );
 }
 
-export default function Header() {
+const Header: React.FC = () => {
+    const [isOpen] = useState(false);
+
     return (
         <header className="header">
-          <div className="mx-auto flex max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
-              <a href="https://www.uaf.edu/acep/">
-                  <img alt="Logo" className="h-14 w-auto" src={logoImage} />
-              </a>
-              <a className="navTab" href="/">Chat</a>
-              <a className="navTab" href="/about">About</a>
-              <a className="navTab" href="/documentation">Documentation</a>
-              <a className="flex items-center space-x-2 text-gray-600 hover:text-gray-900" href="https://github.com/dnur/acep-energy-llm" rel="noopener noreferrer" target="_blank">
-                  <GithubIcon className="h-6 w-6" />
-                  <span>GitHub</span>
-              </a>
-          </div>
+            <a href="https://www.uaf.edu/acep/">
+                <img alt="Logo" className="logo" src={logoImage} />
+            </a>
+            <Menu isOpen={isOpen} width={ '300px' } right>
+                <a className="navTab" href="/">Chat</a>
+                <a className="navTab" href="/about">About</a>
+                <a className="navTab" href="/documentation">Documentation</a>
+                <a className="navTab" href="https://github.com/dnur/acep-energy-llm" rel="noopener noreferrer" target="_blank">
+                  <GithubIcon className="githubIcon" />
+                </a>
+            </Menu>
         </header>
     );
 }
+
+export default Header;
