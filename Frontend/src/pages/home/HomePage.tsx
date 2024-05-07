@@ -1,5 +1,5 @@
 import Header from "../../components/Header/Header";
-import Chat from "../../components/Chat";
+import Chat from "../../components/Chat/Chat";
 import "./HomePage.css";
 
 
