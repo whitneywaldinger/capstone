@@ -5,8 +5,6 @@ import ComponentPage from "./pages/home/HomePage";
 import AboutPage from "./pages/about/About";
 import DocPage from "./pages/documentation/Documentation";
 
-
-
 // Main App component
 function App() {
   return (
@@ -21,6 +19,5 @@ function App() {
     </div>
   );
 }
-
 
 export default App;

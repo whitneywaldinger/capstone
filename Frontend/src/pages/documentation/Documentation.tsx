@@ -1,4 +1,5 @@
-import Header from "../../components/Header/Header";
+// import Header from "../../components/Header/Header";
+import NavBar from "../../components/NavBar/NavBar";
 import "./Documentation.css";
 import systemOverview from "../../images/system-overview.png"
 
@@ -7,7 +8,7 @@ export default function Documentation() {
     <div>
       {/* Inserts the header at the top of the page */}
       <div>
-        <Header />
+        <NavBar />
       </div>
 
       {/* Container to hold page content */}

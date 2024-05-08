@@ -1,13 +1,14 @@
-import Header from "../../components/Header/Header";
+// import Header from "../../components/Header/Header";
+import NavBar from "../../components/NavBar/NavBar";
 import "./About.css";
-import najibPicture from "../../headshots/Haidar_Najib_headshot.jpeg"
-import aaronPicture from "../../headshots/Hong_Aaron_headshot.jpeg"
-import akashPicture from "../../headshots/Shetty_Akash_headshot.png"
-import ichiroPicture from "../../headshots/Nakata_Gerald_headshot.jpeg"
-import benjaminPicture from "../../headshots/Jiang_Benjamin_headshot.jpeg"
-import whitneyPicture from "../../headshots/Waldinger_Whitney_headshot.jpeg"
-import joniPicture from "../../headshots/Nguyen_Joni_headshot.jpeg"
-import brianPicture from "../../headshots/Han_Brian_headshot.jpeg"
+import najibPicture from "../../images/headshots/Haidar_Najib_headshot.jpeg"
+import aaronPicture from "../../images/headshots/Hong_Aaron_headshot.jpeg"
+import akashPicture from "../../images/headshots/Shetty_Akash_headshot.png"
+import ichiroPicture from "../../images/headshots/Nakata_Gerald_headshot.jpeg"
+import benjaminPicture from "../../images/headshots/Jiang_Benjamin_headshot.jpeg"
+import whitneyPicture from "../../images/headshots/Waldinger_Whitney_headshot.jpeg"
+import joniPicture from "../../images/headshots/Nguyen_Joni_headshot.jpeg"
+import brianPicture from "../../images/headshots/Han_Brian_headshot.jpeg"
 
 
 export default function About() {
@@ -15,7 +16,7 @@ export default function About() {
     <div>
       {/* Inserts the header at the top of the page */}
       <div>
-        <Header />
+        <NavBar />
       </div>
 
       {/* Page content component */}
