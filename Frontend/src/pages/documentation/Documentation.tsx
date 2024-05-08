@@ -1,6 +1,6 @@
-// import Header from "../../components/Header/Header";
-import NavBar from "../../components/NavBar/NavBar";
-import "./Documentation.css";
+// import Header from "../../components/Header/Header"
+import NavBar from "../../components/NavBar/NavBar"
+import "./Documentation.css"
 import systemOverview from "../../images/system-overview.png"
 
 export default function Documentation() {

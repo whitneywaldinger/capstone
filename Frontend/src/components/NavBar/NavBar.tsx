@@ -41,31 +41,31 @@ const NavBar = () => {
   }
 
   return (
-    <div>
-        <nav>
-          <div className="hamburger">
-            <div className="burger-menu" onClick={updateMenu}>
-              <div className={burger_class}></div>
-              <div className={burger_class}></div>
-              <div className={burger_class}></div>
-            </div>
+    <div className="navbar">
+      <nav>
+        <div>
+          <div className="burger-menu" onClick={updateMenu}>
+            <div className={burger_class}></div>
+            <div className={burger_class}></div>
+            <div className={burger_class}></div>
           </div>
+        </div>
 
-          <div className="logo">
-            <a href="https://www.uaf.edu/acep/" rel="noopener noreferrer" target="_blank">
-              <img alt="Logo" className="logo" src={logoImage} />
-            </a>
-          </div>
-        </nav>
-
-        <div className={menu_class}>
-          <a className="nav-tab" href="/">Chat</a> <br></br>
-          <a className="nav-tab" href="/about">About</a> <br></br>
-          <a className="nav-tab" href="/documentation">Documentation</a> <br></br>
-          <a href="https://github.com/dnur/acep-energy-llm" rel="noopener noreferrer" target="_blank">
-            <GithubIcon className="github-icon" />
+        <div className="logo">
+          <a href="https://www.uaf.edu/acep/" rel="noopener noreferrer" target="_blank">
+            <img alt="Logo" className="logo" src={logoImage} />
           </a>
         </div>
+      </nav>
+
+      <div className={menu_class}>
+        <a className="nav-tab" href="/">Chat</a> <br></br>
+        <a className="nav-tab" href="/about">About</a> <br></br>
+        <a className="nav-tab" href="/documentation">Documentation</a> <br></br>
+        <a href="https://github.com/dnur/acep-energy-llm" rel="noopener noreferrer" target="_blank">
+              <GithubIcon className="github-icon" />
+        </a>
+      </div>
     </div>
   );
 }

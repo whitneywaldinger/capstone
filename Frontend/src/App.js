@@ -8,7 +8,7 @@ import DocPage from "./pages/documentation/Documentation";
 // Main App component
 function App() {
   return (
-    <div className="App">
+    <div className="app">
         <div className="page">
             <Routes>
                 <Route path="/" element={<ComponentPage/>} />
