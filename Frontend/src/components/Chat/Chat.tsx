@@ -18,7 +18,9 @@ export default function Searchbar() {
   useEffect(() => {
     // Scroll to the bottom of the chat window when responses change
     if (messagesEndRef.current) {
-      messagesEndRef.current.scrollIntoView({ behavior: 'smooth', block: 'end' });
+      messagesEndRef.current.scrollTop = messagesEndRef.current?.scrollHeight;
+      if(messagesEndRef.current?.clientHeight < messagesEndRef.current?.scrollHeight)
+        window.scrollTo(0, document.body.scrollHeight);
     }
   }, [responses]);
 
@@ -45,7 +47,6 @@ export default function Searchbar() {
         },
         ...prevResponses,
       ]);
-      setUserInput(''); // Clear input after sending
     } catch (error) {
       setResponses((prevResponses) => [
         { text: 'Failed to get responses from LLM.', sender: 'bot'},
@@ -60,23 +61,29 @@ export default function Searchbar() {
   return (
     <main>
       <div className="chat">
-        <div className="chat-container">
+        <div className="chat-container" ref={messagesEndRef}>
           <div className="message-container">
             {responses.map((response, index) => (
               <div key={index} className={`message ${response.sender === 'user' ? 'user' : 'bot'}`}>
                 <p className="message-text">{response.text}</p>
               </div>
             ))}
-            <div ref={messagesEndRef}></div>
           </div>
         </div>
 
         <footer className="footer">
           <div className="input-container">
-            <Input value={userInput} onChange={handleInputChange} onEnterPress={handleSend} placeholder={loading ? 'Getting response' : 'Type your message here...'} />
-            <Button onClick={handleSend} disabled={!userInput.trim() || loading}>
+            <Input id="input"
+                value={userInput}
+                onChange={handleInputChange}
+                onEnterPress={handleSend}
+                placeholder={loading ? 'Getting response' : 'Type your message here...'} />
+            <Button id="send-button" onClick={handleSend} disabled={!userInput.trim() || loading}>
               Send
             </Button>
+          </div>
+          <div className="disclaimer">
+            disclaimer
           </div>
         </footer>
       </div>
