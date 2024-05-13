@@ -33,6 +33,7 @@ export default function Searchbar() {
 
     setUserInput(''); // Clear input after sending
     setResponses((prevResponses) => [
+      { text: 'Waiting for response...', sender: 'bot'},
       { text: userMessage, sender: 'user'},
       ...prevResponses,
     ]); // Pop user's message first
@@ -41,16 +42,16 @@ export default function Searchbar() {
     try {
       const response = await axios.post('https://flaskapp-k22nw35fzq-uw.a.run.app/sendquery', { text: userInput });
       setResponses((prevResponses) => [
-        {
-          text: response.data.response,
-          sender: 'bot',
-        },
-        ...prevResponses,
-      ]);
+          {
+            text: response.data.response,
+            sender: 'bot',
+          },
+          ...prevResponses.slice(1),
+        ]);
     } catch (error) {
       setResponses((prevResponses) => [
         { text: 'Failed to get responses from LLM.', sender: 'bot'},
-        ...prevResponses,
+        ...prevResponses.slice(1),
       ]);
       console.error('Error sending message:', error);
     } finally {
@@ -79,7 +80,7 @@ export default function Searchbar() {
                 onEnterPress={handleSend}
                 placeholder={loading ? 'Getting response' : 'Type your message here...'} />
             <Button id="send-button" onClick={handleSend} disabled={!userInput.trim() || loading}>
-              Send
+              {loading ? "Sending..." : "Send"}
             </Button>
           </div>
           <div className="disclaimer">

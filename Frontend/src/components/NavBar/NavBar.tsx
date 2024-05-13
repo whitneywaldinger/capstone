@@ -7,8 +7,8 @@ function GithubIcon(props: React.SVGProps<SVGSVGElement>) {
     <svg
       {...props}
       xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
+      width="36"
+      height="36"
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
@@ -56,15 +56,16 @@ const NavBar = () => {
             <img alt="Logo" className="logo" src={logoImage} />
           </a>
         </div>
+
+        <a className="github-icon" href="https://github.com/dnur/acep-energy-llm" rel="noopener noreferrer" target="_blank">
+          <GithubIcon />
+        </a>
       </nav>
 
       <div className={menu_class}>
         <a className="nav-tab" href="/">Chat</a> <br></br>
         <a className="nav-tab" href="/about">About</a> <br></br>
         <a className="nav-tab" href="/documentation">Documentation</a> <br></br>
-        <a href="https://github.com/dnur/acep-energy-llm" rel="noopener noreferrer" target="_blank">
-              <GithubIcon className="github-icon" />
-        </a>
       </div>
     </div>
   );
