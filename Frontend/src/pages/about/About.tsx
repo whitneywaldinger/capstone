@@ -1,6 +1,6 @@
 import { useState } from 'react'
-// import Header from "../../components/Header/Header"
 import NavBar from "../../components/NavBar/NavBar"
+import InfoButton from "../../components/InfoButton/InfoButton"
 import "./About.css"
 import najibPicture from "../../images/headshots/Haidar_Najib_headshot.jpeg"
 import aaronPicture from "../../images/headshots/Hong_Aaron_headshot.jpeg"
@@ -32,9 +32,10 @@ export default function About() {
 
   return (
     <div>
-      {/* Inserts the header at the top of the page */}
+      {/* Inserts other components onto the page */}
       <div>
         <NavBar />
+        <InfoButton />
       </div>
 
       {/* Page content component */}

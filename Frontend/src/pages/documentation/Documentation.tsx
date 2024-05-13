@@ -1,14 +1,15 @@
-// import Header from "../../components/Header/Header"
 import NavBar from "../../components/NavBar/NavBar"
+import InfoButton from "../../components/InfoButton/InfoButton"
 import "./Documentation.css"
 import systemOverview from "../../images/system-overview.png"
 
 export default function Documentation() {
   return (
     <div>
-      {/* Inserts the header at the top of the page */}
+      {/* Inserts other components onto the page */}
       <div>
         <NavBar />
+        <InfoButton />
       </div>
 
       {/* Container to hold page content */}

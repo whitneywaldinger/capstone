@@ -33,7 +33,7 @@ export default function Searchbar() {
 
     setUserInput(''); // Clear input after sending
     setResponses((prevResponses) => [
-      { text: 'Waiting for response...', sender: 'bot'},
+      { text: 'Waiting for a response...', sender: 'bot'},
       { text: userMessage, sender: 'user'},
       ...prevResponses,
     ]); // Pop user's message first
@@ -82,9 +82,6 @@ export default function Searchbar() {
             <Button id="send-button" onClick={handleSend} disabled={!userInput.trim() || loading}>
               {loading ? "Sending..." : "Send"}
             </Button>
-          </div>
-          <div className="disclaimer">
-            disclaimer
           </div>
         </footer>
       </div>
