@@ -1,5 +1,5 @@
-import { useState } from 'react'
-import NavBar from "../../components/NavBar/NavBar"
+// import { useState } from 'react'
+// import NavBar from "../../components/NavBar/NavBar"
 import InfoButton from "../../components/InfoButton/InfoButton"
 import "./Testing.css"
 
