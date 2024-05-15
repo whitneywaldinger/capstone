@@ -15,7 +15,7 @@ export default function Searchbar() {
     },
   ]);
   const messagesEndRef = useRef<HTMLDivElement | null>(null);
-  const testHTML = `<table border="1" style="width:100%; border-collapse: collapse;">
+  /* const testHTML = `<table border="1" style="width:100%; border-collapse: collapse;">
 <tr><th>After reviewing the related documents, I've extracted the following information regarding Alaska's energy industry: <strong>Table: Summary of Alaska's Energy Industry</strong></th><th><strong>Category</strong></th><th><strong>Information</strong></th><th><strong>Doc_ID(s)</strong></th></tr>
 <tr><td>Energy Exports</td><td>Alaska exports 9 times more fossil fuels than it consumes; projected to increase with gas pipeline construction</td><td>9734b5ac-7f5a-495f-bb94-50eb9f75985e</td></tr>
 <tr><td>Renewable Energy Sources</td><td>Potential for hydro, wind, tidal, and other zero-fuel energy sources; could reduce reliance on fossil fuels and lower consumer energy prices</td><td>9734b5ac-7f5a-495f-bb94-50eb9f75985e</td></tr>
@@ -26,7 +26,7 @@ export default function Searchbar() {
 <tr><td>Research and Development</td><td>Establishment of Alaska Energy Data Gateway to provide accessible energy data for research and decision-making</td><td>7a9b1669-144e-4f12-9671-2e5dfeb7a5fd</td></tr>
 </table>
 I've referenced the following Doc_IDs: * 9734b5ac-7f5a-495f-bb94-50eb9f75985e * 1034e068-56ff-4557-b6f6-03d0296803b1 * a1233b65-62f4-4596-a600-a6461130eba2 * 9300609b-62cf-4`;
-
+*/
   useEffect(() => {
     // Scroll to the bottom of the chat window when responses change
     if (messagesEndRef.current) {
