@@ -272,9 +272,7 @@ export default function About() {
                 and chat box. Importantly, Brian also manages the codebase and architecture of the front-end project.
                 Leveraging the component-based philosophy of the React framework, he has outlined the project workspace,
                 breaking down the front-end implementation into discrete components and further refining the page layout
-                hierarchy. This approach decouples individual code contributions, preventing unnecessary conflicts. Moreover,
-                Brian has written the routes for the project, enabling navigation between different pages. This facilitates
-                the addition of more pages and routings, providing a seamless development workflow for future expansions.
+                hierarchy. This approach decouples individual code contributions, preventing unnecessary conflicts, providing a seamless development workflow for future expansions.
               </p>
               <button onClick={() => setIsOpenBrian(!isOpenBrian)}>
                 {isOpenBrian ? "less" : "more"}

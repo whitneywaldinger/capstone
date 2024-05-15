@@ -23,12 +23,12 @@ function GithubIcon(props: React.SVGProps<SVGSVGElement>) {
 
 const NavBar = () => {
 
-  // to change burger classes
+  // To change burger classes after click
   const [burger_class, setBurgerClass] = useState("burger-bar unclicked")
   const [menu_class, setMenuClass] = useState("menu hidden")
   const [isMenuClicked, setIsMenuClicked] = useState(false)
 
-  // toggle burger menu change
+  // Toggle burger menu change
   const updateMenu = () => {
     if (!isMenuClicked) {
       setBurgerClass("burger-bar clicked")
@@ -43,6 +43,7 @@ const NavBar = () => {
   return (
     <div className="navbar">
       <nav>
+        {/* Buger icon consisting of three div bar */}
         <div>
           <div className="burger-menu" onClick={updateMenu}>
             <div className={burger_class}></div>
@@ -62,6 +63,7 @@ const NavBar = () => {
         </a>
       </nav>
 
+      {/* Menu content */}
       <div className={menu_class}>
         <a className="nav-tab" href="/">Chat</a> <br></br>
         <a className="nav-tab" href="/about">About</a> <br></br>
