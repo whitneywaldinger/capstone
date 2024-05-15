@@ -81,7 +81,7 @@ I've referenced the following Doc_IDs: * 9734b5ac-7f5a-495f-bb94-50eb9f75985e * 
             {responses.map((response, index) => (
               <div key={index} className={`message ${response.sender === 'user' ? 'user' : 'bot'}`}>
                 <p className="message-text">
-                  // show the table response as HTML
+                    {/*Show the table response as HTML*/}
                   <div dangerouslySetInnerHTML={{ __html: response.text}} />
                 </p>
               </div>
