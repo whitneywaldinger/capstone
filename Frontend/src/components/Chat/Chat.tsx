@@ -36,10 +36,16 @@ import remarkGfm from "remark-gfm";
 //   I've referenced the following Doc_IDs: * 9734b5ac-7f5a-495f-bb94-50eb9f75985e * 1034e068-56ff-4557-b6f6-03d0296803b1 * a1233b65-62f4-4596-a600-a6461130eba2 * 9300609b-62cf-4
 //   `;
 
+interface Message {
+  text: string;
+  sender: string;
+  sources?: string[];
+}
+
 export default function Searchbar() {
   const [userInput, setUserInput] = useState('');
   const [loading, setLoading] = useState(false);
-  const [responses, setResponses] = useState([
+  const [responses, setResponses] = useState<Message[]>([
     {
       // Initial message from the bot
       text: 'Welcome to the ACEP Research Chatbot! I am your personalized research assistant. How can I help you?',
@@ -79,6 +85,7 @@ export default function Searchbar() {
           {
             text: response.data.response,
             sender: 'bot',
+            sources: response.data.sources,
           },
           ...prevResponses.slice(1), // Shift the waiting message
         ]);
@@ -106,6 +113,16 @@ export default function Searchbar() {
                   {/*<div dangerouslySetInnerHTML={{ __html: response.text}} />*/}
                   <ReactMarkdown remarkPlugins={[remarkGfm]}>{response.text}</ReactMarkdown>
                 </p>
+                {response.sender === 'bot' && response.sources && response.sources.length > 0 && (
+                  <div className="sources">
+                    <p>Sources:</p>
+                    <ul>
+                      {response.sources.map((source, sourceIndex) => (
+                        <li key={sourceIndex}>{source}</li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
               </div>
             ))}
           </div>
