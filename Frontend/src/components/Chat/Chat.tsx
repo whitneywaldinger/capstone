@@ -36,6 +36,20 @@ import remarkGfm from "remark-gfm";
 //   I've referenced the following Doc_IDs: * 9734b5ac-7f5a-495f-bb94-50eb9f75985e * 1034e068-56ff-4557-b6f6-03d0296803b1 * a1233b65-62f4-4596-a600-a6461130eba2 * 9300609b-62cf-4
 //   `;
 
+const welcomeMessage =  `
+# Welcome to the ACEP Research Chatbot!
+The **Alaska Center for Energy and Power (ACEP)** has spent the last 6 months designing and
+implementing an advanced Language Model (LLM) Chatbot tailored specifically to the field of energy
+research. Recognizing the significant time and effort researchers invest in searching for relevant
+materials, the initiative aims to alleviate this burden by providing a user-friendly interface for
+prompt and accurate information retrieval. We hope you find this version to your liking and that it
+proves helpful in your endeavors!
+## Example Prompts
+Click on one of the following prompts to get started:
+1. Give me a summary of ...
+2. Show me a table of documents that include ...
+`
+
 interface Message {
   text: string;
   sender: string;
@@ -45,10 +59,16 @@ interface Message {
 export default function Searchbar() {
   const [userInput, setUserInput] = useState('');
   const [loading, setLoading] = useState(false);
+
   const [responses, setResponses] = useState<Message[]>([
     {
       // Initial message from the bot
-      text: 'Welcome to the ACEP Research Chatbot! I am your personalized research assistant. How can I help you?',
+      text: 'Welcome! I am your personalized research assistant. How can I help you?',
+      sender: 'bot',
+    },
+    {
+      // Initial message from the bot
+      text: welcomeMessage,
       sender: 'bot',
     },
   ]);
@@ -70,17 +90,23 @@ export default function Searchbar() {
   const handleSend = async () => {
     const userMessage = userInput;
 
+    // If this is the first query, remove the welcome message
+    const updatedResponses = responses.findIndex(response => response.text.includes("Welcome to the ACEP Research Chatbot")) !== -1
+    ? responses.filter((_, index) => index !== 1)
+    : responses;
+
     setUserInput(''); // Clear input after sending
     setResponses((prevResponses) => [
       // Send waiting message first before getting the response
       { text: "Waiting for a response...", sender: 'bot'},
       { text: userMessage, sender: 'user'},
-      ...prevResponses,
+      ...updatedResponses,
     ]); // Pop user's message first
     setLoading(true); // Lock the send button until get the response
 
     try {
       const response = await axios.post('https://flaskapp-k22nw35fzq-uw.a.run.app/sendquery', { text: userInput });
+
       setResponses((prevResponses) => [
           {
             text: response.data.response,
@@ -118,7 +144,9 @@ export default function Searchbar() {
                     <p>Sources:</p>
                     <ul>
                       {response.sources.map((source, sourceIndex) => (
-                        <li key={sourceIndex}>{source}</li>
+                        <li key={sourceIndex}>
+                          <a href={source} target="_blank" rel="noopener noreferrer">{source}</a>
+                        </li>
                       ))}
                     </ul>
                   </div>
